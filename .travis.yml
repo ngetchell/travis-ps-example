@@ -3,7 +3,7 @@ install:
 - travis_retry wget -O - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 - travis_retry echo 'deb https://packages.microsoft.com/ubuntu/14.04/prod trusty main' | sudo tee /etc/apt/sources.list.d/powershell.list
 - travis_retry sudo apt-get update -qq
-- travis_retry sudo DEBIAN_FRONTEND=noninteractive apt-get -y powershell 
+- travis_retry sudo DEBIAN_FRONTEND=noninteractive apt-get powershell -y 
 script:
 - powershell -noprofile -c '"Congratulations! PowerShell is installed at $PSHOME"'
 #notifications:

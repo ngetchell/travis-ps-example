@@ -1,12 +1,10 @@
 dist: trusty
-sudo: required
-language: csharp
 install:
-- wget -O - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-- sudo echo 'deb https://packages.microsoft.com/ubuntu/14.04/prod trusty main' >> /etc/apt/sources.list.d/powershell.list
-- sudo apt-get update -qq
-- sudo DEBIAN_FRONTEND=noninteractive apt-get -y powershell 
+- travis_retry wget -O - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+- travis_retry sudo echo 'deb https://packages.microsoft.com/ubuntu/14.04/prod trusty main' >> /etc/apt/sources.list.d/powershell.list
+- travis_retry sudo apt-get update -qq
+- travis_retry sudo DEBIAN_FRONTEND=noninteractive apt-get -y powershell 
 script:
 - powershell -noprofile -c '"Congratulations! PowerShell is installed at $PSHOME"'
-notifications:
-  email: false
+#notifications:
+#  email: false

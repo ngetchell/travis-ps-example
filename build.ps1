@@ -1,1 +1,2 @@
-invoke-pester .\test -EnableExit
+$ProgressPreference = 'SilentlyContinue'
+invoke-pester ./PSGitLab/Tests -EnableExit

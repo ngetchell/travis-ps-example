@@ -5,7 +5,8 @@ install:
 - travis_retry sudo apt-get update -qq
 - travis_retry sudo apt-get install powershell -y 
 - travis_retry powershell -noprofile -noninteractive -command "Find-Module Pester,PSake,BuildHelpers,PSScriptAnalyzer | Install-Module -Force -Scope CurrentUser"
+- travis_retry git clone https://github.com/ngetchell/PSGitLab.git
 script:
-- powershell -noprofile -noninteractive -file "./build.ps1"
+- powershell -noprofile -noninteractive -file "$ProgressPreference = 'SilentlyContinue'; ./PSGitLab/build.ps1"
 notifications:
   email: false

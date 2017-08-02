@@ -1,1 +1,1 @@
-invoke-pester .\test 
+invoke-pester .\test -EnableExit

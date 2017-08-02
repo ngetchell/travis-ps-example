@@ -4,6 +4,7 @@ install:
 - travis_retry echo 'deb [arch=amd64] https://packages.microsoft.com/ubuntu/14.04/prod trusty main' | sudo tee /etc/apt/sources.list.d/powershell.list
 - travis_retry sudo apt-get update -qq
 - travis_retry sudo apt-get install powershell -y 
+- travis_retry powershell -noprofile -noninteractive -command "Find-Module Pester | Install-Module -Force -Scope CurrentUser"
 script:
 - powershell -noprofile -noninteractive -file "./build.ps1"
 notifications:

@@ -1,12 +1,13 @@
 dist: trusty
+sudo: required
 install:
 - travis_retry wget -O - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 - travis_retry echo 'deb [arch=amd64] https://packages.microsoft.com/ubuntu/14.04/prod trusty main' | sudo tee /etc/apt/sources.list.d/powershell.list
 - travis_retry sudo apt-get update -qq
 - travis_retry sudo apt-get install powershell -y 
-- travis_retry pwsh -noprofile -noninteractive -command "Find-Module Pester,PSake,BuildHelpers,PSScriptAnalyzer,InvokeBuild,PlatyPS | Install-Module -Force -Scope CurrentUser"
+- travis_retry sudo pwsh -noprofile -noninteractive -command "Find-Module Pester,PSake,BuildHelpers,PSScriptAnalyzer,InvokeBuild,PlatyPS | Install-Module -Force -Scope CurrentUser"
 - travis_retry git clone https://github.com/ngetchell/PSGitLab.git psgitlab
 script:
-- pwsh -noprofile -noninteractive -file ./psgitlab/build.ps1
+- sudo pwsh -noprofile -noninteractive -file ./psgitlab/build.ps1
 notifications:
   email: false
